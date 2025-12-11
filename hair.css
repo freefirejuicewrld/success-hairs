@@ -1,0 +1,292 @@
+:root{
+    --pink: #ff4da6;      /* brand pink */
+    --pink-600: #ff2f8f;
+    --accent: #daa520;
+    --bg-dark: #0f1113;   /* page background */
+    --panel: #14171a;     /* card background */
+    --muted: #9aa2a6;
+    --glass: rgba(255,255,255,0.03);
+    --glass-2: rgba(255,77,166,0.06);
+    --white: #f7f9fb;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #0b0c0d 100%);
+    color: var(--white);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+/* Utility */
+.container{width:95%;max-width:1200px;margin:0 auto}
+
+/* Header */
+.site-header{
+    background: linear-gradient(90deg, rgba(10,10,10,0.95), rgba(18,18,20,0.95));
+    border-bottom: 3px solid rgba(255,77,166,0.07);
+    position:sticky;top:0;z-index:50;
+}
+.header-inner{display:flex;align-items:center;gap:20px;padding:14px 0;justify-content:space-between}
+.brand-link{color:inherit;text-decoration:none;display:flex;flex-direction:column}
+.brand h1{
+    font-family: "Playfair Display", serif;
+    font-weight:700;font-size:1.05rem;letter-spacing:0.4px;color:var(--white);
+}
+.tagline{font-size:0.78rem;color:var(--muted);margin-top:4px}
+
+/* Nav */
+.primary-nav ul{display:flex;gap:8px;list-style:none;align-items:center}
+.primary-nav a{
+    color:var(--white);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600;font-size:0.95rem;opacity:0.95}
+.primary-nav a:hover,
+.primary-nav a.active{
+    color:#fff;background:linear-gradient(90deg,var(--pink) 0%,var(--pink-600) 100%);box-shadow:0 6px 18px rgba(255,77,166,0.12);
+}
+
+/* Mobile nav toggle */
+.nav-toggle{display:none;background:transparent;border:0;cursor:pointer}
+.hamburger{width:22px;height:2px;background:var(--white);display:block;position:relative;border-radius:2px;transition:background .18s ease}
+.hamburger::before,.hamburger::after{content:"";position:absolute;left:0;width:22px;height:2px;background:var(--white);border-radius:2px;transition:transform .22s ease, top .18s ease, bottom .18s ease}
+.hamburger::before{top:-7px}
+.hamburger::after{bottom:-7px}
+
+/* HERO */
+.home-section{padding:48px 0;background:transparent}
+.home-grid{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}
+.hero-content h2{font-family:"Playfair Display",serif;color:var(--white);font-size:2rem;margin-bottom:12px}
+.lead{color:var(--muted);margin-bottom:18px;font-size:1rem}
+.hero-cta{display:flex;gap:12px;margin-bottom:14px}
+.hero-features{list-style:none;color:var(--muted);margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.hero-image img{width:100%;height:auto;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;cursor:pointer;font-size:0.95rem}
+.btn-primary{background:linear-gradient(90deg,var(--pink) 0%,var(--pink-600) 100%);color:#111;border:0;box-shadow:0 10px 30px rgba(255,77,166,0.12)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.06)}
+.btn-outline-small{display:inline-block;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);text-decoration:none;color:var(--white);font-weight:700;background:transparent}
+
+/* Section headings */
+h3{font-family:"Playfair Display",serif;color:var(--white);font-size:1.6rem;margin-bottom:8px}
+.section-sub{color:var(--muted);margin-bottom:20px}
+.muted{color:var(--muted);font-size:0.95rem}
+
+/* SHOP GRID */
+.shop-page{padding:56px 0;background:transparent}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.product-card{
+    background:linear-gradient(180deg,var(--panel),#0f1316);
+    border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(2,6,8,0.6);
+    transition:transform .28s ease,box-shadow .28s ease;border:1px solid rgba(255,255,255,0.02);
+    display:flex;flex-direction:column;position:relative;
+}
+.product-card:hover{transform:translateY(-10px);box-shadow:0 28px 80px rgba(2,6,8,0.8)}
+.img-wrap{position:relative;overflow:hidden}
+.product-image{width:100%;height:220px;object-fit:cover;display:block;transition:transform .6s ease}
+.product-card:hover .product-image{transform:scale(1.06)}
+.product-price{
+    display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--pink) 0%,var(--pink-600) 100%);
+    color:#111;font-weight:800;margin-top:6px;font-size:0.98rem;
+}
+.product-info{padding:14px;display:flex;flex-direction:column;gap:10px}
+.product-info h4{font-size:1rem;margin:0;color:var(--white);letter-spacing:0.3px}
+.product-info a.btn-outline-small{align-self:flex-start;background:transparent;border:1px solid rgba(255,255,255,0.06)}
+
+/* PRICE LIST / TABLE */
+.price-section{padding:40px 0;background:transparent}
+.table-scroll{overflow:auto;border-radius:12px}
+.price-table{width:100%;min-width:720px;border-collapse:collapse;background:linear-gradient(180deg,#0d1113,#0b0d10);border:1px solid rgba(255,255,255,0.03)}
+.price-table thead th{
+    background:linear-gradient(90deg,var(--pink),var(--pink-600));color:#111;font-weight:800;padding:12px 14px;text-align:left;font-size:0.95rem;border-bottom:1px solid rgba(255,255,255,0.04)
+}
+.price-table th, .price-table td{border:1px solid rgba(255,255,255,0.04);padding:10px 12px;color:var(--white);font-size:0.95rem}
+.price-table tbody tr:nth-child(even){background:rgba(255,255,255,0.01)}
+.price-table .category-row td{background:transparent;color:var(--pink);font-weight:800;text-transform:uppercase;padding:10px 12px}
+
+/* Gallery */
+.gallery-section{padding:56px 0;background:transparent}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.gallery-item{overflow:hidden;border-radius:10px;position:relative;border:1px solid rgba(255,255,255,0.02)}
+.gallery-image{display:block;width:100%;height:220px;object-fit:cover;transition:transform .6s ease;filter:contrast(0.98)}
+.gallery-item:hover .gallery-image{transform:scale(1.06);filter:brightness(1.02)}
+
+/* =======================
+   TESTIMONIALS (decorative)
+   ======================= */
+.testimonials-section{padding:56px 0;background:linear-gradient(180deg, rgba(255,77,166,0.02), transparent)}
+.decorated-section .section-header{margin-bottom:18px}
+.testimonial-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap:20px;
+    align-items:start;
+}
+.testimonial-card{
+    position:relative;
+    background:linear-gradient(180deg,#0d1113,#0b0d10);
+    padding:20px;padding-top:28px;border-radius:14px;border:1px solid rgba(255,77,166,0.04);
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    overflow:hidden;
+    transition:transform .36s ease, box-shadow .36s ease;
+}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(0,0,0,0.7)}
+.quote-mark{
+    position:absolute;left:18px;top:6px;color:rgba(255,77,166,0.9);font-size:42px;font-weight:700;line-height:1;
+    text-shadow:0 6px 18px rgba(255,77,166,0.06);
+}
+.testimonial-card .quote{color:var(--white);font-style:italic;margin-bottom:16px;line-height:1.5}
+.meta{display:flex;align-items:center;gap:12px}
+.avatar{
+    width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--pink-600));display:flex;align-items:center;justify-content:center;font-weight:700;color:#111;font-size:18px;box-shadow:0 6px 18px rgba(255,77,166,0.08)
+}
+.author{font-weight:800;color:var(--white);margin:0}
+.rating{color:var(--pink);font-weight:700;font-size:0.9rem;opacity:0.95}
+
+/* =======================
+   ABOUT (decorative)
+   ======================= */
+.about-section{padding:56px 0;background:transparent}
+.brand-text-block{max-width:900px;margin:0 auto 20px auto;color:var(--muted);font-size:1rem;line-height:1.7}
+.about-flex-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.feature-item{background:linear-gradient(180deg,#0d1012,#0b0d10);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02)}
+.feature-item.highlight{border-left:4px solid var(--pink);padding-left:16px}
+.feature-item h4{font-family:"Playfair Display",serif;margin-bottom:8px;color:var(--white)}
+.stats{display:flex;gap:12px;margin-top:12px}
+.stat{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;min-width:86px;text-align:center}
+.stat strong{display:block;color:var(--white);font-size:1.05rem}
+.stat span{display:block;color:var(--muted);font-size:0.85rem;margin-top:4px}
+.small{color:var(--muted);font-size:0.92rem}
+
+/* =======================
+   CONTACT (decorative)
+   ======================= */
+.contact-section{padding:56px 0;background:transparent}
+.contact-grid{display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
+.contact-cards{display:flex;flex-direction:column;gap:12px}
+.contact-card{background:linear-gradient(180deg,#111314,#0c0d0f);padding:14px;border-radius:12px;border:1px solid rgba(255,77,166,0.03);box-shadow:0 10px 26px rgba(0,0,0,0.6)}
+.card-icon{width:46px;height:46px;border-radius:8px;background:linear-gradient(90deg,var(--pink),var(--pink-600));display:flex;align-items:center;justify-content:center;font-weight:800;color:#111;margin-bottom:8px}
+.contact-card h4{margin:0 0 6px 0;color:var(--white)}
+.contact-card a{color:var(--white);text-decoration:none;font-weight:700}
+.contact-card p{color:var(--muted);margin:0}
+
+/* Contact form */
+.contact-form{background:linear-gradient(180deg,#0e1112,#0b0d0f);padding:18px;border-radius:12px;border:1px solid rgba(255,77,166,0.03)}
+.form-row{display:flex;flex-direction:column;margin-bottom:12px}
+.form-row label{font-size:0.9rem;color:var(--muted);margin-bottom:6px}
+.form-row input,
+.form-row textarea{
+    background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:var(--white);
+    outline:none;font-size:0.95rem
+}
+.form-row input::placeholder,
+.form-row textarea::placeholder{color:rgba(255,255,255,0.45)}
+.form-actions{display:flex;gap:12px;align-items:center}
+.form-notice{color:var(--muted);margin-top:10px;font-size:0.95rem}
+
+/* =======================
+   FOOTER (decorative)
+   ======================= */
+.site-footer{background:#070809;color:var(--muted);padding:28px 0;margin-top:36px;border-top:1px solid rgba(255,77,166,0.03)}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 320px;gap:18px;align-items:start}
+.footer-col h4{color:var(--white);margin-bottom:8px}
+.footer-links{list-style:none;padding:0}
+.footer-links li{margin-bottom:8px}
+.footer-links a{color:var(--muted);text-decoration:none}
+.footer-links a:hover{color:var(--pink)}
+.socials{display:flex;gap:12px;margin-top:8px}
+.newsletter-form{display:flex;gap:8px;margin-top:8px;align-items:center}
+.newsletter-form input{flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white)}
+.newsletter-form button{padding:8px 12px;border-radius:8px}
+
+/* Footer bottom */
+.footer-bottom{text-align:center;margin-top:18px;color:var(--muted);font-size:0.9rem}
+
+.socials a{
+    text-decoration: none;
+    color: white;
+    transition: 0.5s ease;
+}
+
+.socials a:hover{
+    text-decoration: none;
+    color: rgb(233, 125, 143);
+}
+
+/* =======================
+   MOBILE NAV / RESPONSIVE NAV
+   ======================= */
+
+/* Make the toggle visible at smaller widths and convert nav to a collapsible panel */
+@media (max-width: 920px) {
+    .nav-toggle{display:inline-flex;align-items:center;justify-content:center;padding:8px;border-radius:8px}
+    .primary-nav{
+        position:absolute;
+        top:100%;
+        right:14px;
+        left:14px;
+        background:linear-gradient(180deg, rgba(12,12,12,0.98), rgba(8,8,8,0.98));
+        border-radius:12px;
+        border:1px solid rgba(255,77,166,0.04);
+        box-shadow:0 18px 50px rgba(2,6,8,0.6);
+        overflow:hidden;
+        max-height:0;
+        transition:max-height .28s ease;
+        z-index:45;
+    }
+    .primary-nav ul{
+        display:flex;
+        flex-direction:column;
+        gap:0;
+        padding:10px;
+        align-items:stretch;
+    }
+    .primary-nav li{border-radius:8px;margin:6px 0}
+    .primary-nav a{display:block;padding:12px 14px;border-radius:8px}
+    /* When open, expand to fit links (set a generous max-height) */
+    .primary-nav.open{max-height:680px}
+    /* When the header is fixed at top, give a slight margin so menu sits below header */
+    .header-inner{position:relative}
+}
+
+/* Hamburger animation when active */
+.nav-toggle.open .hamburger{background:transparent}
+.nav-toggle.open .hamburger::before{transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open .hamburger::after{transform:translateY(-7px) rotate(-45deg)}
+
+/* On very small screens make nav full-width nicely */
+@media (max-width: 520px) {
+    .primary-nav{right:8px;left:8px}
+    .home-grid{grid-template-columns:1fr}
+}
+
+/* RESPONSIVE TABLE: stack rows on small screens */
+@media (max-width: 720px) {
+    .price-table{min-width:0;border:0}
+    .table-scroll{overflow:visible}
+    .price-table, .price-table thead, .price-table tbody, .price-table th, .price-table td, .price-table tr {display:block}
+    .price-table thead {display:none}
+    .price-table tr {margin-bottom:12px;background:linear-gradient(180deg,#0d1113,#0b0d10);border:1px solid rgba(255,255,255,0.03);padding:10px;border-radius:10px}
+    .price-table .category-row{display:block;background:transparent;border:none;padding:8px 12px;margin-top:8px}
+    .price-table td{border:none;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+    .price-table td::before{content:attr(data-label);color:var(--muted);font-weight:700;margin-right:12px;flex:0 0 auto}
+    .price-table td[data-label="NEW PRICE"], .price-table td[data-label="CARTON SIZE"], .price-table td[data-label="RATE PER CARTON"]{justify-content:flex-end}
+}
+
+/* Responsive */
+@media (max-width:1024px){.home-grid{grid-template-columns:1fr 320px}}
+@media (max-width:920px){
+    .contact-grid{grid-template-columns:1fr;gap:18px}
+    .footer-grid{grid-template-columns:1fr;gap:18px}
+}
+@media (max-width:520px){
+    .product-image{height:160px}
+    .gallery-image{height:160px}
+    .brand h1{font-size:1rem}
+    .hero-content h2{font-size:1.4rem}
+    h3{font-size:1.2rem}
+}
