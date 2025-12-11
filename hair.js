@@ -234,4 +234,40 @@
 
   // Safety: ensure scrollspy runs after images/layout settle
   window.addEventListener('load', onScrollSpy);
-})();
+})()
+
+
+
+// Mobile menu toggle — replace any previous nav toggle logic with this
+const navToggle = document.getElementById('navToggle');
+const primaryNav = document.getElementById('primaryNav');
+
+if (navToggle && primaryNav) {
+  // ensure initial aria state
+  primaryNav.setAttribute('aria-hidden', 'true');
+
+  function openMenu(open) {
+    document.body.classList.toggle('menu-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    primaryNav.setAttribute('aria-hidden', String(!open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = !document.body.classList.contains('menu-open');
+    openMenu(isOpen);
+  });
+
+  // Close when a nav link is clicked (mobile): keeps behavior expected for single-page anchors
+  primaryNav.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target.tagName === 'A') openMenu(false);
+  });
+
+  // Close with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+      openMenu(false);
+    }
+  });
+};
